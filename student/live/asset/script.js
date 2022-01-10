@@ -38,6 +38,15 @@ function show_otpBox() {
         duration: 500,
     })
 }
+function showClaimed() {
+    anime({
+        targets: ".claimBtn",
+        translateY : '+=4%',
+        scale: [1,1.1],
+        easing: 'linear',
+        duration: 500,
+    })
+}
 function hide_otpBox() {
     var otpWin = document.getElementById("otpcontainer");
     anime({
@@ -50,6 +59,7 @@ function hide_otpBox() {
     })
 }
 function rollClaim(sid, std, sub){
+    showClaimed();
     if(lastClaim!=null && (Date.now()-lastClaim)/1000<10){
         alert("You are requesting too frequently!");
         return;
