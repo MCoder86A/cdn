@@ -6,6 +6,9 @@ function onSub() {
         if(xhhtp_res["status"]=="success"){
             window.location = "../";
         }
+        else{
+            alert("Wrong userID or password");
+        }
     };
     var formArgs = document.forms["loginForm"];
     var userID = formArgs["userID"].value;
