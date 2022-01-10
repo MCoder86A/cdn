@@ -43,6 +43,7 @@ function show_req() {
 function a_init() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
+        console.log(this.responseText);
         // var xhhtp_res = JSON.parse(this.responseText);
     };
 
@@ -73,6 +74,7 @@ function startListen() {
     const starCountRef = ref(db, 'users/');
     onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
+        console.log(data);
         if((data.status == "CLAIM")&&(data.sub == sub)&&(data.std == std)&&startflag){
             processClaim(data.sid, data.name);
         }
@@ -91,6 +93,7 @@ var req_name = document.getElementById("name");
 function processClaim(sid, name) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
+        console.log(this.responseText);
         var xhhtp_res = JSON.parse(this.responseText);
         if (xhhtp_res["STATUS"] == "SUCCESS") {
             show_req();

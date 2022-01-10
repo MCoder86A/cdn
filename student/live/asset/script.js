@@ -38,6 +38,16 @@ function show_otpBox() {
         duration: 500,
     })
 }
+function showClaimed() {
+    var btn = document.getElementById("claimBtn");
+    btn.innerHTML = "Wait";
+    anime({
+        targets: ".claimBtn",
+        translateY : '+=4%',
+        scale: [1,1.1],
+        duration: 200,
+    })
+}
 function hide_otpBox() {
     var otpWin = document.getElementById("otpcontainer");
     anime({
@@ -50,6 +60,7 @@ function hide_otpBox() {
     })
 }
 function rollClaim(sid, std, sub){
+    showClaimed();
     if(lastClaim!=null && (Date.now()-lastClaim)/1000<10){
         alert("You are requesting too frequently!");
         return;
@@ -62,6 +73,11 @@ function rollClaim(sid, std, sub){
             console.log("succ");
             show_otpBox();
         }
+        if (xhhtp_res["status"] == "ACLAIMED") {
+            alert("You have already claimed for this session");
+            window.location = `./?std=${std}&sub=${sub}`;
+        }
+        
         if (xhhtp_res["status"] == "TOOFREQ") {
             console.log("tofreq");
         }
@@ -90,8 +106,13 @@ function otpSubmit() {
             
             show_claimSuccess();
         }
-        if (xhhtp_res["STATUS"] == "TOOFREQ") {
-            console.log("tofreq");
+        if (xhhtp_res["STATUS"] == "TIMEUP") {
+            alert("Your OTP is valid for only 2min.");
+            window.location = `./?std=${std}&sub=${sub}`;
+        }
+        if (xhhtp_res["STATUS"] == "FAIL"){
+            alert("You have enter wrong OTP.");
+            window.location = `./?std=${std}&sub=${sub}`;
         }
     };
     var args = `OTP=${otp}&SUB=${sub}`;
