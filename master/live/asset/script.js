@@ -43,6 +43,7 @@ function show_req() {
 function a_init() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
+        console.log(this.responseText);
         // var xhhtp_res = JSON.parse(this.responseText);
     };
 
@@ -91,6 +92,7 @@ var req_name = document.getElementById("name");
 function processClaim(sid, name) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
+        console.log(this.responseText);
         var xhhtp_res = JSON.parse(this.responseText);
         if (xhhtp_res["STATUS"] == "SUCCESS") {
             show_req();
