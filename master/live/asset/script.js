@@ -75,8 +75,14 @@ function startListen() {
     onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
         console.log(data);
-        if((data.status == "CLAIM")&&(data.sub == sub)&&(data.std == std)&&startflag){
-            processClaim(data.sid, data.name);
+        if((data.status == "CLAIM")){
+            if((data.sub == sub)&&(data.std == std)&&startflag){
+                processClaim(data.sid, data.name);
+            }
+        }
+        else if((data.status == "ACK")&&startflag){
+            var listenBtn = document.getElementById("claim_confirm");
+            listenBtn.innerHTML = data.name+" just joined the classroom";
         }
 
         if(startflag == false){

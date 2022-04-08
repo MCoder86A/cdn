@@ -145,11 +145,11 @@
     }
 
     .dash .col1 {
-      margin-top: -2em;
+      /* margin-top: -2em; */
       margin-left: 22vw;
       width: 60vw;
       border-radius: 1em;
-      background-color: #b9d3e7;
+      /* background-color: #b9d3e7; */
     }
     table tr, td, th{
       height: 3em;
@@ -204,7 +204,7 @@
       padding-top: 1em;
     }
     table{
-      background-color: #d8e3ec;
+      background-color: #ffffff;
     }
     table td{
       padding-left: 2em;

@@ -134,11 +134,11 @@
     }
 
     .dash .col1 {
-      margin-top: -2em;
+      /* margin-top: -2em; */
       margin-left: 22vw;
       width: 60vw;
       border-radius: 1em;
-      background-color: #b9d3e7;
+      /* background-color: #b9d3e7; */
     }
 
   }

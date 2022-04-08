@@ -53,3 +53,11 @@ body{
     font-size: 1.4em;
     color: #B1D4E0;
 }
+#claim_confirm{
+    padding-top: 5em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(252, 252, 252);
+}
